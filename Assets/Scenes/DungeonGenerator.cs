@@ -8,7 +8,10 @@ public class DungeonGenerator : MonoBehaviour
     public GameObject curvedHallRightPrefab;
     public GameObject endRoomPrefab;
 
-    private int maxRooms = 10;
+    public GameObject playerPrefab; // Prefab-ul pentru juc?tor
+    private GameObject playerInstance; // Referin?? la instan?a juc?torului
+
+    private int maxRooms = 5;
 
     void Start()
     {
@@ -19,9 +22,12 @@ public class DungeonGenerator : MonoBehaviour
     {
         Transform lastExitPoint = null;
 
-        // Instan?iem camera de start la pozi?ia ini?ial? (0, 0, 0)
+        // Plas?m camera de start
         GameObject startRoom = Instantiate(startRoomPrefab, Vector3.zero, Quaternion.identity);
         lastExitPoint = GetExitPoint(startRoom);
+
+        // Plas?m juc?torul în camera de start
+        PlacePlayerInStartRoom(startRoom);
 
         // Gener?m camerele intermediare
         for (int i = 1; i < maxRooms - 1; i++)
@@ -29,12 +35,11 @@ public class DungeonGenerator : MonoBehaviour
             GameObject nextRoomPrefab = GetRandomRoomPrefab();
             GameObject nextRoom = Instantiate(nextRoomPrefab);
 
-            // Aliniem urm?toarea camer?
             AlignRoom(nextRoom, lastExitPoint);
             lastExitPoint = GetExitPoint(nextRoom);
         }
 
-        // Instan?iem camera de final
+        // Plas?m camera de final
         GameObject endRoom = Instantiate(endRoomPrefab);
         AlignRoom(endRoom, lastExitPoint);
     }
@@ -62,18 +67,30 @@ public class DungeonGenerator : MonoBehaviour
             return;
         }
 
-        // Alineaz? pozi?ia camerei noi astfel încât EntryPoint s? se suprapun? peste ExitPoint-ul anterior
+        // Aliniem pozi?ia camerei noi astfel încât EntryPoint s? se suprapun? peste ExitPoint-ul anterior
         Vector3 offset = previousExitPoint.position - entryPoint.position;
         room.transform.position += offset;
 
-        // Debug pentru verificarea pozi?iilor
-        Debug.Log($"Aliniem camera {room.name} la pozi?ia {room.transform.position}");
-
-        // Alineaz? rota?ia pentru a p?stra direc?ia corect?
+        // Rote?te camera pentru a se potrivi direc?iei punctului anterior
         float angleDifference = previousExitPoint.eulerAngles.y - entryPoint.eulerAngles.y;
         room.transform.RotateAround(entryPoint.position, Vector3.up, angleDifference);
+    }
 
-        // Debug pentru rota?ie
-        Debug.Log($"Rotim camera {room.name} cu diferen?a de unghi: {angleDifference}");
+    void PlacePlayerInStartRoom(GameObject startRoom)
+    {
+        // Verific?m dac? player-ul este deja plasat
+        if (playerInstance == null && playerPrefab != null)
+        {
+            // Pozi?ion?m juc?torul în centrul camerei de start sau la un punct specific (ex. EntryPoint)
+            Transform entryPoint = startRoom.transform.Find("EntryPoint");
+            Vector3 playerPosition = entryPoint != null ? entryPoint.position : startRoom.transform.position;
+            playerPosition.y += 2f;
+            // Instan?iem juc?torul la pozi?ia calculat?
+            playerInstance = Instantiate(playerPrefab, playerPosition, Quaternion.identity);
+        }
+        else
+        {
+            Debug.LogError("PlayerPrefab este lips? sau juc?torul a fost deja plasat!");
+        }
     }
 }
