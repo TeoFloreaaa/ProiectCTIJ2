@@ -85,6 +85,7 @@ public class DungeonGenerator : MonoBehaviour
             Transform entryPoint = startRoom.transform.Find("EntryPoint");
             Vector3 playerPosition = entryPoint != null ? entryPoint.position : startRoom.transform.position;
             playerPosition.y += 2f;
+            playerPosition.z += 2f;
             playerInstance = Instantiate(playerPrefab, playerPosition, Quaternion.identity);
         }
         else
