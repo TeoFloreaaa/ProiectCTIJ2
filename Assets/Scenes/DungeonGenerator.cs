@@ -7,11 +7,12 @@ public class DungeonGenerator : MonoBehaviour
     public GameObject curvedHallLeftPrefab;
     public GameObject curvedHallRightPrefab;
     public GameObject endRoomPrefab;
+    public GameObject largeHall;
 
     public GameObject playerPrefab; 
     private GameObject playerInstance; 
 
-    private int maxRooms = 5;
+    private int maxRooms = 7;
 
     void Start()
     {
@@ -46,9 +47,10 @@ public class DungeonGenerator : MonoBehaviour
 
     GameObject GetRandomRoomPrefab()
     {
-        int randomIndex = Random.Range(0, 3);
+        int randomIndex = Random.Range(0, 4);
         if (randomIndex == 0) return hallPrefab;
         else if (randomIndex == 1) return curvedHallLeftPrefab;
+        else if (randomIndex == 3) return largeHall;
         else return curvedHallRightPrefab;
     }
 
