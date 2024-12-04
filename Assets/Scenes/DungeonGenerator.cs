@@ -11,7 +11,9 @@ public class DungeonGenerator : MonoBehaviour
     public GameObject playerPrefab; 
     private GameObject playerInstance; 
 
-    private int maxRooms = 8;
+    private int maxRooms = 30;
+
+    private string lastRoomType = "";
 
     void Start()
     {
@@ -46,10 +48,29 @@ public class DungeonGenerator : MonoBehaviour
 
     GameObject GetRandomRoomPrefab()
     {
-        int randomIndex = Random.Range(0, 3);
-        if (randomIndex == 0) return hallPrefab;
-        else if (randomIndex == 1) return curvedHallLeftPrefab;
-        else return curvedHallRightPrefab;
+        GameObject nextPrefab = null;
+
+        do
+        {
+            int randomIndex = Random.Range(0, 3);
+            if (randomIndex == 0)
+            {
+                nextPrefab = hallPrefab;
+                lastRoomType = "hall";
+            }
+            else if (randomIndex == 1 && lastRoomType != "curvedHallLeft")
+            {
+                nextPrefab = curvedHallLeftPrefab;
+                lastRoomType = "curvedHallLeft";
+            }
+            else if (randomIndex == 2 && lastRoomType != "curvedHallRight")
+            {
+                nextPrefab = curvedHallRightPrefab;
+                lastRoomType = "curvedHallRight";
+            }
+        } while (nextPrefab == null);
+
+        return nextPrefab;
     }
 
     Transform GetExitPoint(GameObject room)
