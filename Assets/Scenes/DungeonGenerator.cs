@@ -11,7 +11,7 @@ public class DungeonGenerator : MonoBehaviour
     public GameObject playerPrefab; 
     private GameObject playerInstance; 
 
-    private int maxRooms = 5;
+    private int maxRooms = 8;
 
     void Start()
     {

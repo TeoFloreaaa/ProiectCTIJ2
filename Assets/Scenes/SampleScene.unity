@@ -20,13 +20,13 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 1, g: 1, b: 1, a: 1}
+  m_AmbientSkyColor: {r: 0.335849, g: 0.10328938, b: 0.10328938, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.03134923, g: 0.08806389, b: 0.13962269, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 10650, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -395,6 +395,7 @@ GameObject:
   m_Component:
   - component: {fileID: 26196455}
   - component: {fileID: 26196456}
+  - component: {fileID: 26196457}
   m_Layer: 0
   m_Name: Point Light (3)
   m_TagString: Untagged
@@ -479,6 +480,21 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &26196457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26196454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b0cd796ed809fa4ab8371c75a883f6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minIntensity: 0.4
+  maxIntensity: 2
+  flickerSpeed: 1.5
 --- !u!1001 &31167075
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3282,6 +3298,7 @@ GameObject:
   m_Component:
   - component: {fileID: 249629783}
   - component: {fileID: 249629784}
+  - component: {fileID: 249629785}
   m_Layer: 0
   m_Name: Point Light (1)
   m_TagString: Untagged
@@ -3366,6 +3383,21 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &249629785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249629782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b0cd796ed809fa4ab8371c75a883f6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minIntensity: 1
+  maxIntensity: 2
+  flickerSpeed: 1
 --- !u!1001 &251929504
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3929,6 +3961,7 @@ GameObject:
   m_Component:
   - component: {fileID: 296910112}
   - component: {fileID: 296910113}
+  - component: {fileID: 296910114}
   m_Layer: 0
   m_Name: Point Light (4)
   m_TagString: Untagged
@@ -4013,6 +4046,21 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &296910114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296910111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b0cd796ed809fa4ab8371c75a883f6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minIntensity: 0.5
+  maxIntensity: 1.5
+  flickerSpeed: 1
 --- !u!1001 &305090878
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5801,6 +5849,7 @@ GameObject:
   m_Component:
   - component: {fileID: 426979900}
   - component: {fileID: 426979901}
+  - component: {fileID: 426979902}
   m_Layer: 0
   m_Name: Point Light (5)
   m_TagString: Untagged
@@ -5885,6 +5934,21 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &426979902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426979899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b0cd796ed809fa4ab8371c75a883f6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minIntensity: 0.3
+  maxIntensity: 2.4
+  flickerSpeed: 2.6
 --- !u!1001 &428123302
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6531,6 +6595,7 @@ GameObject:
   m_Component:
   - component: {fileID: 464104723}
   - component: {fileID: 464104724}
+  - component: {fileID: 464104725}
   m_Layer: 0
   m_Name: Point Light (4)
   m_TagString: Untagged
@@ -6615,6 +6680,21 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &464104725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 464104722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b0cd796ed809fa4ab8371c75a883f6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minIntensity: 0.3
+  maxIntensity: 3
+  flickerSpeed: 1.7
 --- !u!1 &471448653
 GameObject:
   m_ObjectHideFlags: 0
@@ -8227,6 +8307,7 @@ GameObject:
   m_Component:
   - component: {fileID: 597857977}
   - component: {fileID: 597857978}
+  - component: {fileID: 597857979}
   m_Layer: 0
   m_Name: Point Light (2)
   m_TagString: Untagged
@@ -8311,6 +8392,21 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &597857979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597857976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b0cd796ed809fa4ab8371c75a883f6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minIntensity: 0.5
+  maxIntensity: 2
+  flickerSpeed: 1
 --- !u!1001 &602772917
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9437,6 +9533,7 @@ GameObject:
   m_Component:
   - component: {fileID: 660163044}
   - component: {fileID: 660163045}
+  - component: {fileID: 660163046}
   m_Layer: 0
   m_Name: Point Light (2)
   m_TagString: Untagged
@@ -9521,6 +9618,21 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &660163046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660163043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b0cd796ed809fa4ab8371c75a883f6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minIntensity: 0.4
+  maxIntensity: 2
+  flickerSpeed: 1.5
 --- !u!1001 &660286184
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11409,6 +11521,7 @@ GameObject:
   m_Component:
   - component: {fileID: 795947045}
   - component: {fileID: 795947046}
+  - component: {fileID: 795947047}
   m_Layer: 0
   m_Name: Point Light (6)
   m_TagString: Untagged
@@ -11493,6 +11606,21 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &795947047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795947044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b0cd796ed809fa4ab8371c75a883f6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minIntensity: 0.3
+  maxIntensity: 2.6
+  flickerSpeed: 2.7
 --- !u!1001 &797637816
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13301,6 +13429,7 @@ GameObject:
   m_Component:
   - component: {fileID: 895875883}
   - component: {fileID: 895875884}
+  - component: {fileID: 895875885}
   m_Layer: 0
   m_Name: Point Light (7)
   m_TagString: Untagged
@@ -13385,6 +13514,21 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &895875885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895875882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b0cd796ed809fa4ab8371c75a883f6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minIntensity: 0.4
+  maxIntensity: 1.6
+  flickerSpeed: 1.6
 --- !u!1001 &901337918
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19181,6 +19325,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1346001988}
   - component: {fileID: 1346001989}
+  - component: {fileID: 1346001990}
   m_Layer: 0
   m_Name: Point Light (8)
   m_TagString: Untagged
@@ -19265,6 +19410,21 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1346001990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346001987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b0cd796ed809fa4ab8371c75a883f6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minIntensity: 0.4
+  maxIntensity: 2
+  flickerSpeed: 1.5
 --- !u!1001 &1347196913
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22475,6 +22635,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1570384706}
   - component: {fileID: 1570384707}
+  - component: {fileID: 1570384708}
   m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
@@ -22559,6 +22720,21 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1570384708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570384705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b0cd796ed809fa4ab8371c75a883f6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minIntensity: 1
+  maxIntensity: 2
+  flickerSpeed: 1
 --- !u!1001 &1573440380
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23325,6 +23501,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1628210493}
   - component: {fileID: 1628210494}
+  - component: {fileID: 1628210495}
   m_Layer: 0
   m_Name: Point Light (2)
   m_TagString: Untagged
@@ -23409,6 +23586,21 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1628210495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628210492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b0cd796ed809fa4ab8371c75a883f6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minIntensity: 1
+  maxIntensity: 2
+  flickerSpeed: 1
 --- !u!1001 &1633872908
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23806,6 +23998,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1674198303}
   - component: {fileID: 1674198304}
+  - component: {fileID: 1674198305}
   m_Layer: 0
   m_Name: Point Light (3)
   m_TagString: Untagged
@@ -23890,6 +24083,21 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1674198305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674198302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b0cd796ed809fa4ab8371c75a883f6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minIntensity: 0.5
+  maxIntensity: 1.5
+  flickerSpeed: 1
 --- !u!1001 &1674674834
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28579,6 +28787,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2091336702}
   - component: {fileID: 2091336703}
+  - component: {fileID: 2091336704}
   m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
@@ -28663,6 +28872,21 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &2091336704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091336701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b0cd796ed809fa4ab8371c75a883f6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minIntensity: 1
+  maxIntensity: 2
+  flickerSpeed: 1
 --- !u!1001 &2094766763
 PrefabInstance:
   m_ObjectHideFlags: 0
