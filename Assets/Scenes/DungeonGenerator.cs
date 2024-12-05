@@ -4,14 +4,19 @@ public class DungeonGenerator : MonoBehaviour
 {
     public GameObject startRoomPrefab;
     public GameObject hallPrefab;
+    public GameObject largeHallPrefab;
     public GameObject curvedHallLeftPrefab;
     public GameObject curvedHallRightPrefab;
     public GameObject endRoomPrefab;
+    public GameObject roomType1;
+    public GameObject roomType2;
+    public GameObject roomType3;
+    public GameObject roomType4;
 
     public GameObject playerPrefab; 
     private GameObject playerInstance; 
 
-    private int maxRooms = 30;
+    private int maxRooms = 10;
 
     private string lastRoomType = "";
 
@@ -52,7 +57,7 @@ public class DungeonGenerator : MonoBehaviour
 
         do
         {
-            int randomIndex = Random.Range(0, 3);
+            int randomIndex = Random.Range(0, 8);
             if (randomIndex == 0)
             {
                 nextPrefab = hallPrefab;
@@ -67,6 +72,31 @@ public class DungeonGenerator : MonoBehaviour
             {
                 nextPrefab = curvedHallRightPrefab;
                 lastRoomType = "curvedHallRight";
+            }
+            else if(randomIndex == 3)
+            {
+                nextPrefab = largeHallPrefab;
+                lastRoomType = "largeHall";
+            }
+            else if(randomIndex == 4)
+            {
+                nextPrefab = roomType1;
+                lastRoomType = "roomType1";
+            }
+            else if (randomIndex == 5)
+            {
+                nextPrefab = roomType2;
+                lastRoomType = "roomType2";
+            }
+            else if (randomIndex == 6)
+            {
+                nextPrefab = roomType3;
+                lastRoomType = "roomType4";
+            }
+            else if (randomIndex == 7)
+            {
+                nextPrefab = roomType4;
+                lastRoomType = "roomType4";
             }
         } while (nextPrefab == null);
 
@@ -83,8 +113,7 @@ public class DungeonGenerator : MonoBehaviour
         Transform entryPoint = room.transform.Find("EntryPoint");
 
         if (entryPoint == null || previousExitPoint == null)
-        {
-            Debug.LogError("EntryPoint sau ExitPoint lips?!");
+        {          
             return;
         }
 
@@ -111,7 +140,7 @@ public class DungeonGenerator : MonoBehaviour
         }
         else
         {
-            Debug.LogError("PlayerPrefab este lips? sau juc?torul a fost deja plasat!");
+            Debug.LogError("Player-ul lipseste sau nu a fost adaugat in scena!");
         }
     }
 }
