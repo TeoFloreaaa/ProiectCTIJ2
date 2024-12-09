@@ -45,7 +45,6 @@ public class DoorInteraction : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerNearby = true;
-            Debug.Log("Juc?torul este aproape de u??!");
         }
     }
 
@@ -54,7 +53,6 @@ public class DoorInteraction : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerNearby = false;
-            Debug.Log("Juc?torul a p?r?sit zona u?ii.");
         }
     }
 
