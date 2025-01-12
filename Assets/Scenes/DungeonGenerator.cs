@@ -18,6 +18,7 @@ public class ProceduralDungeon : MonoBehaviour
     public GameObject roomType7;
     public GameObject LargecurvedHallLeftPrefab;
     public GameObject LargecurvedHallRightPrefab;
+    public GameObject KeyRoom;
 
     public GameObject player; // Referin?? la juc?tor
     public int maxVisibleRooms = 2; // Num?rul de camere active simultan
@@ -110,7 +111,9 @@ public class ProceduralDungeon : MonoBehaviour
     GameObject GetRandomRoomPrefab()
     {
         GameObject nextPrefab = null;
-        int randomIndex = Random.Range(0, 13);
+        int randomIndex = Random.Range(0, 14);
+
+        //randomIndex = 13;
 
         if (randomIndex == 0)
         {
@@ -175,6 +178,11 @@ public class ProceduralDungeon : MonoBehaviour
         else if (randomIndex == 12)
         {
             nextPrefab = roomType7;
+
+        }
+        else if (randomIndex == 13)
+        {
+            nextPrefab = KeyRoom;
 
         }
         return nextPrefab;

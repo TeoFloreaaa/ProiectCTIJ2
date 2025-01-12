@@ -1,35 +1,58 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DoorInteraction : MonoBehaviour
 {
-    public float openAngle = 90f; // Unghiul la care se deschide u?a
+    public float openAngle = 90f; // Unghiul la care se deschide ușa
     public float openSpeed = 2f; // Viteza deschiderii
-    public KeyCode interactKey = KeyCode.E; // Tasta pentru interac?iune
+    public KeyCode interactKey = KeyCode.E; // Tasta pentru interacțiune
+    public AudioClip openDoorSound; // Sunetul pentru deschiderea ușii
+    public AudioClip closeDoorSound; // Sunetul pentru închiderea ușii
 
-    private bool isOpen = false; // U?a e deschis??
-    private bool playerNearby = false; // Juc?torul este aproape?
+    private bool isOpen = false; // Ușa e deschisă?
+    private bool playerNearby = false; // Jucătorul este aproape?
 
-    private Quaternion closedRotation; // Pozi?ia ini?ial? a u?ii (�nchis?)
-    private Quaternion openRotation; // Pozi?ia deschis? a u?ii
+    private Quaternion closedRotation; // Poziția inițială a ușii (închisă)
+    private Quaternion openRotation; // Poziția deschisă a ușii
+    private AudioSource audioSource;
 
     void Start()
     {
-        // Salveaz? rota?ia curent? a pivotului ca fiind "�nchis?"
+        // Salvează rotația curentă a pivotului ca fiind "închisă"
         closedRotation = transform.rotation;
 
-        // Calculeaz? rota?ia pentru pozi?ia "deschis?"
+        // Calculează rotația pentru poziția "deschisă"
         openRotation = Quaternion.Euler(transform.eulerAngles + new Vector3(0, openAngle, 0));
+
+        // Adaugă sau obține componenta AudioSource
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        // Previne redarea automată a sunetelor
+        audioSource.playOnAwake = false;
     }
 
     void Update()
     {
-        // Dac? juc?torul apas? tasta de interac?iune ?i este aproape
+        // Dacă jucătorul apasă tasta de interacțiune și este aproape
         if (playerNearby && Input.GetKeyDown(interactKey))
         {
-            isOpen = !isOpen; // Comut? �ntre deschis/�nchis
+            isOpen = !isOpen; // Comută între deschis/închis
+
+            // Redă sunetul corespunzător
+            if (isOpen)
+            {
+                PlaySound(openDoorSound);
+            }
+            else
+            {
+                PlaySound(closeDoorSound);
+            }
         }
 
-        // Anima?ia de deschidere/�nchidere
+        // Animația de deschidere/închidere
         if (isOpen)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, openRotation, Time.deltaTime * openSpeed);
@@ -56,4 +79,12 @@ public class DoorInteraction : MonoBehaviour
         }
     }
 
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.clip = clip;
+            audioSource.Play(); // Redă sunetul
+        }
+    }
 }
