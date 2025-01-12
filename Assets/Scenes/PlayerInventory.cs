@@ -1,21 +1,21 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    private HashSet<string> collectedKeys = new HashSet<string>(); // Cheile colectate
+    private List<string> keys = new List<string>(); // Lista cheilor colectate
 
     public void CollectKey(string keyID)
     {
-        if (!collectedKeys.Contains(keyID))
+        if (!keys.Contains(keyID))
         {
-            collectedKeys.Add(keyID);
-            Debug.Log("Cheia " + keyID + " adaugata in inventar.");
+            keys.Add(keyID);
+            Debug.Log("Cheia " + keyID + " a fost colectată!");
         }
     }
 
     public bool HasKey(string keyID)
     {
-        return collectedKeys.Contains(keyID);
+        return keys.Contains(keyID);
     }
 }

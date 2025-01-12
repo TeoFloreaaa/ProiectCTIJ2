@@ -3,7 +3,15 @@ guid: 18bfd482109253e4dad8e319b64c51e8
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - startRoomPrefab: {instanceID: 0}
+  - hallPrefab: {instanceID: 0}
+  - largeHallPrefab: {instanceID: 0}
+  - curvedHallLeftPrefab: {instanceID: 0}
+  - curvedHallRightPrefab: {instanceID: 0}
+  - endRoomPrefab: {instanceID: 0}
+  - lockedWallPrefab: {instanceID: 0}
+  - player: {fileID: 775633651514615813, guid: d3d1621feb2fae14e98969efcf32c1b0, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
