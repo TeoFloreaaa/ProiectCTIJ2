@@ -10,8 +10,19 @@ MonoImporter:
   - curvedHallLeftPrefab: {instanceID: 0}
   - curvedHallRightPrefab: {instanceID: 0}
   - endRoomPrefab: {instanceID: 0}
+  - roomType1: {instanceID: 0}
+  - roomType2: {instanceID: 0}
+  - roomType3: {instanceID: 0}
+  - roomType4: {instanceID: 0}
+  - roomType5: {instanceID: 0}
+  - roomType6: {instanceID: 0}
+  - roomType7: {instanceID: 0}
+  - LargecurvedHallLeftPrefab: {instanceID: 0}
+  - LargecurvedHallRightPrefab: {instanceID: 0}
+  - KeyRoom: {instanceID: 0}
   - lockedWallPrefab: {instanceID: 0}
-  - player: {fileID: 775633651514615813, guid: d3d1621feb2fae14e98969efcf32c1b0, type: 3}
+  - player: {instanceID: 0}
+  - playerPrefab: {fileID: 8029017917570986881, guid: 1e4ebd53f4fab8a4cbf128c2d92575bd, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

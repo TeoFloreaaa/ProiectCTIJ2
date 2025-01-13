@@ -15,14 +15,14 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // Mi?carea pe axele X ?i Z
+        // Miscarea pe axele X si Z
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
         Vector3 move = transform.right * moveX + transform.forward * moveZ;
 
         rb.velocity = new Vector3(move.x * moveSpeed, rb.velocity.y, move.z * moveSpeed);
 
-        // S?ritura
+        // Saritura
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);

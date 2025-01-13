@@ -2,6 +2,7 @@
 
 public class DoorInteraction : MonoBehaviour
 {
+    public bool canOpen = false;
     public float openAngle = 90f; // Unghiul la care se deschide ușa
     public float openSpeed = 2f; // Viteza deschiderii
     public KeyCode interactKey = KeyCode.E; // Tasta pentru interacțiune
@@ -37,7 +38,7 @@ public class DoorInteraction : MonoBehaviour
     void Update()
     {
         // Dacă jucătorul apasă tasta de interacțiune și este aproape
-        if (playerNearby && Input.GetKeyDown(interactKey))
+        if (playerNearby && Input.GetKeyDown(interactKey) && canOpen)
         {
             isOpen = !isOpen; // Comută între deschis/închis
 

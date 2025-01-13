@@ -19,24 +19,26 @@ public class ProceduralDungeon : MonoBehaviour
     public GameObject LargecurvedHallLeftPrefab;
     public GameObject LargecurvedHallRightPrefab;
     public GameObject KeyRoom;
+    public GameObject KeyRoom1;
 
-    public GameObject lockedWallPrefab; // Prefab-ul pentru zidul blocant
-    private GameObject lastLockedWall; // Referință la ultimul zid generat
+    public GameObject lockedWallPrefab; 
+    private GameObject lastLockedWall; 
 
-    public GameObject player; // Referință la jucător
-    public int maxVisibleRooms = 2; // Număr maxim de camere vizibile simultan
+    public GameObject player; 
+    public int maxVisibleRooms = 2; 
 
-    private Queue<GameObject> activeRooms = new Queue<GameObject>(); // Coada camerelor active
-    private Transform lastExitPoint; // Punctul de ieșire al ultimei camere
+    private Queue<GameObject> activeRooms = new Queue<GameObject>(); 
+    private Transform lastExitPoint; 
 
     public GameObject playerPrefab;
-    private int roomsGenerated = 0; // Număr de camere generate
+    private int roomsGenerated = 0; 
     public int maxRooms = 10;
 
     void Start()
     {
         if (player == null && playerPrefab != null)
         {
+            
             player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
             Debug.Log("Player-ul a fost generat automat.");
         }
@@ -47,20 +49,20 @@ public class ProceduralDungeon : MonoBehaviour
             return;
         }
 
-        // Generăm camera de start
+        
         GameObject startRoom = Instantiate(startRoomPrefab, Vector3.zero, Quaternion.identity);
         activeRooms.Enqueue(startRoom);
 
-        // Setăm punctul de ieșire al primei camere
+        
         lastExitPoint = GetExitPoint(startRoom);
 
-        // Generăm prima cameră adiacentă
+        
         GenerateNextRoom();
     }
 
     void Update()
     {
-        // Verificăm dacă jucătorul a trecut de punctul de ieșire
+        
         if (Vector3.Distance(player.transform.position, lastExitPoint.position) < 5f)
         {
             GenerateNextRoom();
@@ -69,68 +71,68 @@ public class ProceduralDungeon : MonoBehaviour
 
     void GenerateNextRoom()
     {
-        // Verificăm dacă am ajuns la numărul maxim de camere
+        
         if (roomsGenerated >= maxRooms - 1)
         {
-            // Generează camera finală
+            
             GameObject finalRoom = Instantiate(endRoomPrefab);
             AlignRoom(finalRoom, lastExitPoint);
             activeRooms.Enqueue(finalRoom);
 
             Debug.Log("FinalRoom a fost generată!");
 
-            // Dezactivează generarea altor camere
-            enabled = false; // Oprește scriptul după generarea FinalRoom
+            
+            enabled = false; 
             return;
         }
 
-        // Obținem o cameră aleatorie
+        
         GameObject nextRoomPrefab = GetRandomRoomPrefab();
         GameObject nextRoom = Instantiate(nextRoomPrefab);
 
-        // Aliniem camera nouă
+        
         AlignRoom(nextRoom, lastExitPoint);
 
-        // Actualizăm punctul de ieșire
+        
         lastExitPoint = GetExitPoint(nextRoom);
 
-        // Adăugăm camera la coada camerelor active
+        
         activeRooms.Enqueue(nextRoom);
 
-        // Adăugăm zidul la camera anterioară
-        if (activeRooms.Count > 1) // Dacă există cel puțin o cameră anterioară
+        
+        if (activeRooms.Count > 1) 
         {
-            GameObject currentRoom = nextRoom; // Camera generată acum
-            AddLockedWallToCurrentRoom(currentRoom); // Transmitem camera generată funcției
+            GameObject currentRoom = nextRoom; 
+            AddLockedWallToCurrentRoom(currentRoom); 
         }
 
-        // Ștergem camerele vechi dacă sunt prea multe
+        
         if (activeRooms.Count > maxVisibleRooms)
         {
             GameObject oldRoom = activeRooms.Dequeue();
             Destroy(oldRoom);
         }
 
-        // Incrementăm contorul de camere
+        
         roomsGenerated++;
     }
 
 
     void AddLockedWallToCurrentRoom(GameObject currentRoom)
     {
-        // Adaugă zidul blocant la EntryPoint-ul camerei actuale
+        
         Transform entryPoint = currentRoom.transform.Find("EntryPoint");
         if (entryPoint != null)
         {
-            // Șterge zidul blocant anterior, dacă există
+           
             if (lastLockedWall != null)
             {
                 Destroy(lastLockedWall);
             }
 
-            // Creează un nou zid blocant
+            
             lastLockedWall = Instantiate(lockedWallPrefab, entryPoint.position, entryPoint.rotation);
-            Debug.Log("Peretele blocant a fost adăugat la EntryPoint-ul camerei actuale.");
+            //Debug.Log("Peretele blocant a fost adăugat la EntryPoint-ul camerei actuale.");
         }
         else
         {
@@ -142,10 +144,10 @@ public class ProceduralDungeon : MonoBehaviour
     GameObject GetRandomRoomPrefab()
     {
         GameObject nextPrefab = null;
-        bool visitedRoom = false;
         do
         {
-            int randomIndex = Random.Range(0, 14);
+            int randomIndex = Random.Range(0, 15);
+            randomIndex = 14;
             if (randomIndex == 0) nextPrefab = hallPrefab;
             else if (randomIndex == 1) nextPrefab = curvedHallLeftPrefab;
             else if (randomIndex == 2) nextPrefab = curvedHallRightPrefab;
@@ -159,12 +161,8 @@ public class ProceduralDungeon : MonoBehaviour
             else if (randomIndex == 10) nextPrefab = roomType5;
             else if (randomIndex == 11) nextPrefab = roomType6;
             else if (randomIndex == 12) nextPrefab = roomType7;
-            else if (randomIndex == 13 && visitedRoom == false)
-            {
-                nextPrefab = KeyRoom;
-                if (visitedRoom == true) nextPrefab = null;
-                visitedRoom = true;
-            }
+            else if (randomIndex == 13) nextPrefab = KeyRoom;
+            else if (randomIndex == 14) nextPrefab = KeyRoom1;
         } while (nextPrefab == null);
 
         return nextPrefab;
@@ -172,13 +170,12 @@ public class ProceduralDungeon : MonoBehaviour
 
     Transform GetExitPoint(GameObject room)
     {
-        // Găsește punctul de ieșire al unei camere
         return room.transform.Find("ExitPoint");
     }
 
     void AlignRoom(GameObject room, Transform previousExitPoint)
     {
-        // Aliniază camera nouă cu punctul de ieșire al celei anterioare
+        // Aliniaza camera noua cu punctul de iesire al celei anterioare
         Transform entryPoint = room.transform.Find("EntryPoint");
 
         if (entryPoint == null || previousExitPoint == null)
@@ -187,7 +184,7 @@ public class ProceduralDungeon : MonoBehaviour
             return;
         }
 
-        // Calculează poziția și rotirea pentru aliniere
+        
         Vector3 offset = previousExitPoint.position - entryPoint.position;
         room.transform.position += offset;
 
