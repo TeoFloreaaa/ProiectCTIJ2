@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
 
 public class ProceduralDungeon : MonoBehaviour
 {
@@ -16,10 +17,13 @@ public class ProceduralDungeon : MonoBehaviour
     public GameObject roomType5;
     public GameObject roomType6;
     public GameObject roomType7;
+    public GameObject roomType8;
     public GameObject LargecurvedHallLeftPrefab;
     public GameObject LargecurvedHallRightPrefab;
     public GameObject KeyRoom;
     public GameObject KeyRoom1;
+    public GameObject KeyRoom2;
+    public GameObject labirint;
 
     public GameObject lockedWallPrefab; 
     private GameObject lastLockedWall; 
@@ -33,6 +37,7 @@ public class ProceduralDungeon : MonoBehaviour
     public GameObject playerPrefab;
     private int roomsGenerated = 0; 
     public int maxRooms = 10;
+    private int flag = 0;
 
     void Start()
     {
@@ -144,10 +149,21 @@ public class ProceduralDungeon : MonoBehaviour
     GameObject GetRandomRoomPrefab()
     {
         GameObject nextPrefab = null;
+        
         do
         {
-            int randomIndex = Random.Range(0, 15);
-            randomIndex = 14;
+            int randomIndex = Random.Range(0, 18); ;
+            if (flag == 0 && randomIndex == 15)
+            {               
+                flag = 1;
+            }
+            else
+            {    
+                do
+                {
+                    randomIndex = Random.Range(0, 18);
+                } while (randomIndex == 15);
+            }          
             if (randomIndex == 0) nextPrefab = hallPrefab;
             else if (randomIndex == 1) nextPrefab = curvedHallLeftPrefab;
             else if (randomIndex == 2) nextPrefab = curvedHallRightPrefab;
@@ -163,6 +179,9 @@ public class ProceduralDungeon : MonoBehaviour
             else if (randomIndex == 12) nextPrefab = roomType7;
             else if (randomIndex == 13) nextPrefab = KeyRoom;
             else if (randomIndex == 14) nextPrefab = KeyRoom1;
+            else if (randomIndex == 15) nextPrefab = labirint;
+            else if (randomIndex == 16) nextPrefab = roomType8;
+            else if (randomIndex == 17) nextPrefab = KeyRoom2;
         } while (nextPrefab == null);
 
         return nextPrefab;
